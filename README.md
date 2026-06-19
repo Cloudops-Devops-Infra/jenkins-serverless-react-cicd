@@ -1,6 +1,17 @@
-# 🚀 Enterprise-Grade GitOps Pipeline: Automated IaC Provisioning, React Deployment & Full-Stack Observability
+Pipeline: Automated IaC Provisioning, React Deployment & Full-Stack Observability
 
 An advanced, self-contained DevOps pipeline that emulates an enterprise cloud deployment workflow and full-stack observability matrix completely on a local workstation. This project transitions traditional manual infrastructure deployment into a true GitOps lifecycle, utilizing Jenkins for orchestration, HashiCorp Terraform for Infrastructure as Code (IaC), and Docker Compose to encapsulate continuous integration runners, target cloud environments, and time-series telemetry databases.
+
+---
+
+## 📈 Project Evolution Timeline (Day 1 to Present)
+
+This repository tracks my engineering progression from cloud sandboxing to building production-grade, highly observable localized clusters:
+* **Day 1: Public Cloud Exploration:** Initial design focused on building serverless patterns in public AWS (S3, API Gateway, Lambda, DynamoDB). Moved to a local stack execution model to guarantee strict cost-containment ($0.00 infrastructure bill lifecycle).
+* **Day 2: Infrastructure as Code & Pipeline Decoupling:** Migrated to local cloud emulation layers (Floci/LocalStack). Wrote declarative Groovy pipelines to automate infrastructure provisioning via HashiCorp Terraform alongside Node.js artifact generation frameworks.
+* **Day 3: Full-Stack AIOps Observability & Platform Hardening:** Extended the runtime engine with deep telemetry collectors (Prometheus time-series scrapers) and performance monitoring panels (Grafana). Hardened the multi-container grid against OCI runtime bind errors, custom loopback proxy routing issues, and service JVM engine crashes.
+
+---
 
 ## 🏗️ System Architecture
 
