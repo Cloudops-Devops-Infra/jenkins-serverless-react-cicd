@@ -2,7 +2,14 @@
     agent any
 
     environment {
-        TF_VAR_aws_endpoint = 'http://host.docker.internal:4566'
+        TF_VAR_aws_endpoint   = 'http://host.docker.internal:4566'
+        AWS_ACCESS_KEY_ID     = 'mock-ops-key-id'     
+        AWS_SECRET_ACCESS_KEY = 'mock-ops-secret-key' 
+        AWS_DEFAULT_REGION    = 'us-east-1'           
+    }
+
+    tools {
+        nodejs 'node18' 
     }
 
     stages {
@@ -30,17 +37,29 @@
 
         stage('Build Website') {
             steps {
-                echo 'Installing dependencies...'
-                sh 'npm install'
-                echo 'Compiling the website...'
-                sh 'export NODE_OPTIONS=--openssl-legacy-provider && export PUBLIC_URL=. && npm run build'
+                dir('.') { 
+                    echo 'Installing dependencies...'
+                    sh 'npm install'
+                    echo 'Compiling the website...'
+                    sh 'npm run build'
+                }
             }
         }
 
         stage('Deploy to Floci S3') {
             steps {
+                echo 'Setting up AWS CLI binary inside container volume...'
+                sh '''
+                    if [ ! -f /var/jenkins_home/bin/aws ]; then
+                        curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+                        unzip -o awscliv2.zip
+                        ./aws/install -i /var/jenkins_home/aws-cli -b /var/jenkins_home/bin
+                        rm -rf aws awscliv2.zip
+                    fi
+                '''
+                
                 echo 'Deploying website to local Floci S3 bucket...'
-                sh "aws --endpoint-url=http://host.docker.internal:4566 s3 sync build/ s3://jenkins-serverless-react-cicd-bucket-v2 --acl public-read"
+                sh "/var/jenkins_home/bin/aws --endpoint-url=http://host.docker.internal:4566 s3 sync build/ s3://jenkins-serverless-react-cicd-bucket-v2 --acl public-read"
             }
         }
     }
