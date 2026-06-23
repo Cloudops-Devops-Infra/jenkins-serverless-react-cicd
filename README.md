@@ -1,21 +1,27 @@
-Pipeline: Automated IaC Provisioning, React Deployment & Full-Stack Observability
+# Pipeline: Automated IaC Provisioning, DevSecOps Security Gates & Full-Stack Observability
 
-An advanced, self-contained DevOps pipeline that emulates an enterprise cloud deployment workflow and full-stack observability matrix completely on a local workstation. This project transitions traditional manual infrastructure deployment into a true GitOps lifecycle, utilizing Jenkins for orchestration, HashiCorp Terraform for Infrastructure as Code (IaC), and Docker Compose to encapsulate continuous integration runners, target cloud environments, and time-series telemetry databases.
+![Jenkins](https://img.shields.io/badge/CI%2FCD-Jenkins-blue?style=for-the-badge&logo=jenkins)
+![Terraform](https://img.shields.io/badge/Infra-Terraform-7B42BC?style=for-the-badge&logo=terraform)
+![Trivy](https://img.shields.io/badge/Security-Trivy-00A4A6?style=for-the-badge&logo=aquasecurity)
+![AWS](https://img.shields.io/badge/Cloud-LocalStack%2FFloci-FF9900?style=for-the-badge&logo=amazon-aws)
+
+An advanced, self-contained DevSecOps pipeline that emulates an enterprise cloud deployment workflow, security gate scanning compliance, and full-stack observability matrix completely on a local workstation. This project transitions traditional manual infrastructure deployment into a true GitOps lifecycle, utilizing Jenkins for orchestration, HashiCorp Terraform for Infrastructure as Code (IaC), Aquasecurity Trivy for vulnerability parsing, and Docker Compose to encapsulate target environments and time-series telemetry databases.
 
 ---
 
-## 📈 Project Evolution Timeline (Day 1 to Present)
+## Project Evolution Timeline (Day 1 to Present)
 
-This repository tracks my engineering progression from cloud sandboxing to building production-grade, highly observable localized clusters:
+This repository tracks my engineering progression from cloud sandboxing to building production-grade, highly secure, and observable localized clusters:
 * **Day 1: Public Cloud Exploration:** Initial design focused on building serverless patterns in public AWS (S3, API Gateway, Lambda, DynamoDB). Moved to a local stack execution model to guarantee strict cost-containment ($0.00 infrastructure bill lifecycle).
-* **Day 2: Infrastructure as Code & Pipeline Decoupling:** Migrated to local cloud emulation layers (Floci/LocalStack). Wrote declarative Groovy pipelines to automate infrastructure provisioning via HashiCorp Terraform alongside Node.js artifact generation frameworks.
-* **Day 3: Full-Stack AIOps Observability & Platform Hardening:** Extended the runtime engine with deep telemetry collectors (Prometheus time-series scrapers) and performance monitoring panels (Grafana). Hardened the multi-container grid against OCI runtime bind errors, custom loopback proxy routing issues, and service JVM engine crashes.
+* **Day 2: Infrastructure as Code & Pipeline Decoupling:** Migrated to local cloud emulation layers (Floci/LocalStack). Wrote declarative Groovy pipelines to automate infrastructure provisioning via HashiCorp Terraform alongside Node.js asset generation frameworks.
+* **Day 3: Full-Stack Observability Matrix:** Extended the runtime engine with deep telemetry collectors (Prometheus time-series scrapers) and performance monitoring panels (Grafana) to track pipeline and container resource consumption.
+* **Day 4: Shift-Left DevSecOps & AI Native Remediation:** Hardened the pipeline by integrating a static analysis compliance gate. Overcame Docker-in-Docker encapsulation traps by deploying portable standalone binary runtimes, and engineered a native fault-interception engine that automatically parses misconfigured S3 blocks to write live engineering mitigation reports.
 
 ---
 
-## 🏗️ System Architecture
+## System Architecture
 
-The pipeline automates the journey from an infrastructure/code change in the repository to a live application hosted on an emulated cloud platform, while continuously streaming server health telemetry to a centralized visualization deck.
+The pipeline automates the journey from an infrastructure/code change in the repository to a live application hosted on an emulated cloud platform, while continuously validating security thresholds and streaming systems health telemetry to a centralized visualization deck.
 
 ```text
 [ Developer Commit ] ──> [ GitHub Repository ]
@@ -25,127 +31,91 @@ The pipeline automates the journey from an infrastructure/code change in the rep
                                 │                                   │
         ┌───────────────────────┴───────────────────────┐           ▼
         ▼                                               ▼   [ Prometheus Database ]
-[ Stage 1: IaC Provisioning ]               [ Stage 2: App Compilation ]    │
-  • Downloads Standalone Terraform            • Managed Node.js Runtime     │
-  • Forces Path-Style Routing                 • Installs dependencies       ▼
-  • Provisions Local S3 Bucket (v2)           • Compiles optimized React [ Grafana Desk ]
-        │                                               │             (Dashboard UI)
-        └───────────────────────┬───────────────────────┘
-                                ▼
-                   [ Stage 3: Cloud Delivery ]
-                     • Injects dummy AWS payload variables
-                     • Syncs binary assets via AWS CLI
-                     • Targets Local Cloud Emulator Network
-🛠️ The DevOps Tech Stack
+[ Stage 1: Checkout & Pull ]                 [ Stage 2: Security Scan ]     │
+  • Resets local workspace                     • Standalone Trivy Engine    │
+  • Clones master Git tree                     • Blocks unsafe HCL code     ▼
+        │                                               │   [ Grafana Desk ]
+        ▼                                               ▼    (Dashboard UI)
+[ Stage 3: Build Web Assets ]                [ Stage 4: Cloud Delivery ]
+  • Compiles React components                  • Bypasses Loopback Ports
+  • Unpacks production code                    • Syncs secure S3 targets
+Tech Stack and Tooling
 CI/CD Orchestration: Jenkins (Declarative Pipeline / Groovy Scripting)
 
-Infrastructure as Code (IaC): HashiCorp Terraform (v1.9.0)
+Infrastructure Configuration: HashiCorp Terraform (v1.9.0)
+
+Static Application Security Testing (SAST): Aquasecurity Trivy Engine
 
 Time-Series Metric Ingestion: Prometheus (Scraping vitals via native exporter integrations)
 
 Telemetry Visualization Matrix: Grafana (Data source linked over internal bridge networks)
 
-Containerization & Networking: Docker & Docker Compose (Isolated virtual bridge networks)
-
-Application Framework: React.js (Node.js 18 compilation runtime environments)
+Containerization & Networking: Docker & Docker Compose
 
 Local Cloud Platform: Floci / LocalStack (Emulating Amazon S3 API structures)
 
-Command Line Interface: AWS CLI (Configured with dynamic virtual key signing)
-
-📂 Repository Layout
+Repository Layout
 Plaintext
 .
-├── main.tf                 # Terraform configuration declaring the S3 infrastructure blueprint
-├── Jenkinsfile             # Enterprise declarative multi-stage automation script
-├── docker-compose.yml      # Unified container orchestration manifest for the AIOps stack
+├── main.tf                 # Patched Terraform configuration declaring secure S3 architectures
+├── Jenkinsfile             # Enterprise declarative multi-stage automation script with native AI fallbacks
+├── docker-compose.yml      # Unified container orchestration manifest for the core systems stack
 ├── prometheus.yml          # Telemetry parsing config mapping targets and collection internals
-├── ai_log_analyzer.py      # Script tool for parsing and analyzing pipeline log vectors
 └── README.md               # Comprehensive architecture and engineering documentation
-💡 Note: The React application source code is systematically managed within a transient sandbox directory during runtime execution to maintain strict structural boundary isolation between platform code and application business logic.
-
-⚙️ Automated Pipeline Stages
+Automated Pipeline Stages
 1. Checkout Code
-Dynamically pulls the infrastructure declarative configurations and deployment configurations from GitHub, establishing a clean execution tracking base inside the workspace.
+Dynamically pulls the latest repository tree from GitHub, ensuring clean version history state synchronization prior to code execution.
 
-2. Infrastructure Provisioning (IaC)
-Bootstraps a self-contained, user-space Terraform binary within the workspace environment. Initializes provider subsystems, evaluates real-time configuration state against the environment, and executes an automated, hands-free provisioning run (terraform apply -auto-approve) to guarantee that the required target cloud architecture exists before application transport begins.
+2. DevSecOps Security Scan (Shift-Left)
+Downloads and runs a performance-isolated static analysis compiler. Evaluates main.tf files against global security vectors. If any high or critical flaws are uncovered (such as public bucket exposure or missing resting-state encryption algorithms), the security gate throws an exit code 1, automatically crashing the deployment line before a bad configuration goes live.
 
 3. Build Website
-Deploys a portable Node.js 18 execution runtime directly inside the pipeline track. Restricts directory focus to the application layer, installs project node dependencies, and compiles a production-optimized compilation artifact ready for edge-network delivery.
+Deploys a portable execution runtime inside the pipeline workspace, assembling code assets and packaging them into clean, optimized production-ready HTML elements.
 
 4. Deploy to Floci S3
-Instantiates the automated AWS CLI delivery layer within the container home volume. Overrides global cloud routing variables to map directly onto the internal Docker container proxy matrix (host.docker.internal:4566), injects mock authorization signers, and handles cross-directory synchronization, moving the compiled frontend static layers directly into the designated S3 bucket.
+Instantiates the automated AWS CLI delivery layer, overrides global network routing paths to talk directly to the host container proxy network (host.docker.internal:4566), signs mock authorizations, and safely syncs the compiled distribution code to your bucket.
 
-📊 Live System Observability Matrix
-To ensure the automation engine is monitored like a high-availability production asset, the pipeline integrates real-time systems telemetry scraping.
+Automated Security Mitigation Metrics
+Intentional Failure Interception
+When unencrypted configurations are detected within the infrastructure tree, the workflow catches the error code and spins up a native post-mortem handler to print out clear remediation actions directly to the engineer:
 
-Metric Extraction: The Jenkins engine hooks directly into a Prometheus metrics extension endpoint at /prometheus/, broadcasting raw JVM application metrics and executor runtime data.
+Plaintext
+====================================================
+AI OPS AUTOMATED REMEDIATION REPORT             
+====================================================
+Status: PIPELINE CRASHED BY SECURITY GATE
+Target Asset: S3 Bucket (calc_bucket)\n
+[CRITICAL] Vulnerability Found: Public Access Allowed (AWS-0091)
+Fix Recommendation: Add an explicit 'aws_s3_bucket_public_access_block' resource.
+Verified Hardened State
+Once compliant remediation blocks are written to the infrastructure tree, the compliance check gives a clean pass, running downstream deployments smoothly:
 
-Scrape Interval: Prometheus sweeps the endpoint every 5 seconds, compiling system trends into a local database volume.
+Plaintext
+Running DevSecOps Security Scan engine...
+[Pipeline] readFile
+[Pipeline] echo
+SECURITY GATE PASSED: All high/critical configurations are fully secure!
+Real-World Engineering Roadblocks Overcome
+Challenge 1: Docker-in-Docker (DinD) Nesting Constraint
+The Symptom: Attempting to run docker run aquasecurity/trivy from inside a containerized Jenkins agent threw a terminating docker: not found error.
 
-Visual Control Deck: Grafana consumes the time-series data and populates a custom Jenkins Performance and Health Overview Dashboard, exposing real-time dials for JVM memory usage, executor queue allocations, container CPU load, and stage build durations.
+The Resolution: Avoided complex socket mount pathways by downloading the compiled standalone Linux binary package directly into the user-space workspace, running security tasks completely natively.
 
-🖼️ Pipeline Visual Verification
-1. Jenkins Automation Stage View
-Validated proof execution showing the entire declarative orchestration pipeline passing flawlessly with a clean, consecutive green metrics state (Build #15 Success):
+Challenge 2: Groovy Script Engine Compilation Collisions
+The Symptom: Inserting Python-style scripting comments (#) into post-action script blocks caused immediate Jenkins syntax interpretation errors.
 
-2. Centralized Grafana Telemetry Dashboard
-The real-time time-series logging output showing active telemetry aggregation, container load indexes, JVM allocations, and live background scraping:
+The Resolution: Adjusted commenting architecture to strict Java/Groovy standards (//), satisfying compiler restrictions.
 
-3. AIOps Self-Healing & Fault Tolerance
-To ensure high availability, the infrastructure engine utilizes containerized restart policies coupled with live health telemetry. When core system services undergo disruptive updates (such as warm plugin JVM reloads), the orchestration layer automatically handles service restoration without human intervention.
+Challenge 3: S3 DNS Hosted-Style Address Routing Failure
+The Symptom: Default AWS configurations utilize virtual hosted subdomains which local container proxy DNS paths cannot resolve.
 
-💡 Real-World Engineering Roadblocks Overcome
-🛡️ Challenge 1: Docker Container Loopback Networking Breakdown
-The Symptom: Jenkins executing commands inside a container interpreted localhost as its own internal filesystem, rendering it blind to the cloud emulator running on the host machine.
+The Resolution: Enforced explicit path-style parameters (s3_use_path_style = true) within the Terraform provider payload configuration to guide lookups directly through linear URLs.
 
-The Resolution: Abstracted network paths by implementing a custom variable layer in the Terraform configuration, routing Jenkins traffic out of the container boundary using the host bridge endpoint (http://host.docker.internal:4566).
-
-🌐 Challenge 2: S3 DNS Hosted-Style Address Routing Failure
-The Symptom: By default, the AWS Terraform provider uses Virtual Hosted-Style bucket structures (e.g., http://bucket-name.localhost:4566). The internal container proxy DNS could not resolve these custom ad-hoc subdomains, leading to immediate no such host crashes.
-
-The Resolution: Enforced Path-Style Addressing inside the AWS provider configuration block by setting s3_use_path_style = true. This forced Terraform to communicate over structural URL paths (http://host.docker.internal:4566/bucket-name), bypassing container DNS layout limitations.
-
-🔑 Challenge 3: AWS CLI Credential Tracking Trap
-The Symptom: The automated deployment agent threw a terminating error Unable to locate credentials, blocking asset transport despite communicating with a local mock emulator that required no authentication.
-
-The Resolution: Configured a global environment block directly within the declarative Jenkinsfile, injecting persistent dummy cryptographic credentials (AWS_ACCESS_KEY_ID = 'mock-ops-key-id'). This satisfied the security validator check inside the AWS CLI utility wrapper without exposing sensitive production keys.
-
-📦 Challenge 4: OCI Runtime File-vs-Directory Bind-Mount Conflict
-The Symptom: When deploying the telemetry database, the container threw an OCI runtime exception (runc create failed: not a directory), immediately crashing Prometheus at startup.
-
-The Resolution: Diagnosed that executing Docker commands from incorrect directories caused Windows to auto-generate an empty placeholder folder named prometheus.yml instead of pointing to the flat configuration text file. Resolved by purging container states, removing the corrupted folder path, and using proper terminal positioning to mount the clean configuration file.
-
-🔄 Challenge 5: Internal Web UI Container Termination Crash
-The Symptom: Forcing a Jenkins plug-in restart from inside the web control panel to activate the Prometheus exporter successfully stopped core automation tasks but killed the underlying Docker container process daemon entirely, dropping port 8080 offline.
-
-The Resolution: Intercepted the crash lifecycle via terminal stream tracing (docker logs -f jenkins), bypassed the broken browser UI state, and executed low-level CLI container restoration steps (docker compose up -d) to safely load the new plugin extensions back into active memory, restoring the environment automatically.
-
-🚀 How to Run Locally
-Step 1: Clone the Repository and Enter the Working Path
+How to Run Locally
+1. Launch Environment
 PowerShell
-git clone [https://github.com/Cloudops-Devops-Infra/jenkins-serverless-react-cicd.git](https://github.com/Cloudops-Devops-Infra/jenkins-serverless-react-cicd.git)
-cd jenkins-serverless-react-cicd
-Step 2: Spin Up the Complete AIOps Stack via Docker Compose
-Launch all containerized environments (Jenkins, Prometheus, Grafana, Cloud Emulator) unified inside an isolated network bridge in the background:
-
-PowerShell
-docker compose up -d
-Step 3: Configure the Jenkins Automation Job
-Access the Jenkins UI at http://localhost:8080.
-
-Select New Item -> Create a Pipeline named Website-Deployment-Pipeline.
-
-Scroll to the Pipeline configuration section, change the definition to Pipeline script from SCM, choose Git, paste your repository URL, and set the script path to Jenkinsfile.
-
-Click Build Now to execute the pipeline.
-
-Step 4: Access Your Observability Dashboards
-Raw Telemetry Metrics: http://localhost:8080/prometheus/
-
-Prometheus Target Grid: http://localhost:9090/targets
-
-Grafana Visual Interface: http://localhost:3000 (Log in with credentials admin / admin, verify the Prometheus data source connection, and view real-time metrics charts).
+docker start jenkins prometheus grafana floci-local
+2. Run Pipeline
+Access your Jenkins interface at http://localhost:8080, click Build Now inside your existing Website-Deployment-Pipeline workspace, and watch your validation pass cleanly!
 
 Developed by Subash Patra — Associate Cloud Engineer
