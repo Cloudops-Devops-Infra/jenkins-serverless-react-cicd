@@ -1,17 +1,3 @@
-﻿variable "aws_endpoint" {
-  type    = string
-  default = "http://localhost:4566"
-}
-
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
-  }
-}
-
 provider "aws" {
   region                      = "us-east-1"
   access_key                  = "mock_access_key"
@@ -19,10 +5,9 @@ provider "aws" {
   skip_credentials_validation = true
   skip_metadata_api_check     = true
   skip_requesting_account_id  = true
-  s3_use_path_style           = true 
 
   endpoints {
-    s3 = var.aws_endpoint
+    s3 = "http://host.docker.internal:4566"
   }
 }
 
@@ -31,10 +16,21 @@ resource "aws_s3_bucket" "calc_bucket" {
   force_destroy = true
 }
 
-resource "aws_s3_bucket_website_configuration" "calc_site" {
-  bucket = aws_s3_bucket.calc_bucket.id
+# ??? FIX 1: Enforce Private Access Controls (Fixes AWS-0091 & AWS-0093)
+resource "aws_s3_bucket_public_access_block" "calc_bucket_privacy" {
+  bucket                  = aws_s3_bucket.calc_bucket.id
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
 
-  index_document {
-    suffix = "index.html"
+# ??? FIX 2: Enforce Default Server-Side Encryption (Fixes AWS-0132)
+resource "aws_s3_bucket_server_side_encryption_configuration" "calc_bucket_crypto" {
+  bucket = aws_s3_bucket.calc_bucket.id
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm = "AES256"
+    }
   }
 }
